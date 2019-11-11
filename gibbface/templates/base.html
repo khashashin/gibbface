@@ -14,11 +14,27 @@
                 {% endwith %}
             {% endblock %}
         </title>
+        <!-- Favicons -->
+        <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
+        <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/gibbface.css' %}">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+        <!-- Bootstrap CSS File -->
+        <link href="{% static 'css/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      
+        <!-- Libraries CSS Files -->
+        <link href="{% static 'css/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/animate/animate.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -30,7 +46,28 @@
 
         {% block content %}{% endblock %}
 
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
         {# Global javascript #}
+
+        <!-- JavaScript Libraries -->
+        <script src="{% static 'css/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'css/jquery/jquery-migrate.min.js' %}"></script>
+        <script src="{% static 'css/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'css/easing/easing.min.js' %}"></script>
+        <script src="{% static 'css/superfish/hoverIntent.js' %}"></script>
+        <script src="{% static 'css/superfish/superfish.min.js' %}"></script>
+        <script src="{% static 'css/wow/wow.min.js' %}"></script>
+        <script src="{% static 'css/waypoints/waypoints.min.js' %}"></script>
+        <script src="{% static 'css/counterup/counterup.min.js' %}"></script>
+        <script src="{% static 'css/owlcarousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'css/isotope/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'css/lightbox/js/lightbox.min.js' %}"></script>
+        <script src="{% static 'css/touchSwipe/jquery.touchSwipe.min.js' %}"></script>
+        <!-- Contact Form JavaScript File -->
+        <script src="{% static 'js/contactform.js' %}"></script>
+
+        <!-- Template Main Javascript File -->
         <script type="text/javascript" src="{% static 'js/gibbface.js' %}"></script>
 
         {% block extra_js %}
