@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-frapp{% endblock %}
+
+{% block content %}
+
+    {% block go_to_top_button %}
+    {% endblock %}
+
+    <h1>frapp</h1>
+
+    {% block extra_js %}
+        <script src="{% static 'js/face-api.min.js' %}"></script>
+    {% endblock %}
+
+{% endblock %}
