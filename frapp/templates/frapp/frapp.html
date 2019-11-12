@@ -11,9 +11,34 @@
     {% endblock %}
 
     <h1>frapp</h1>
+    <div style="position: relative" class="margin">
+      <video onplay="onPlay(this)" id="inputVideo" autoplay muted></video>
+      <canvas id="overlay" />
+    </div>
 
     {% block extra_js %}
+        <script>
+            jQuery(document).ready(function () {
+                run()
+            });
+
+            async function run() {
+                // load the models
+                await faceapi.loadMtcnnModel(`{% static 'models/mtcnn/mtcnn_model-weights_manifest.json' %}`);
+                await faceapi.loadFaceRecognitionModel(`{% static 'models/fr/face_recognition_model-weights_manifest.json' %}`);
+
+                // try to access users webcam and stream the images
+                // to the video element
+                const videoEl = document.getElementById('inputVideo');
+                navigator.getUserMedia(
+                    {video: {}},
+                    stream => videoEl.srcObject = stream,
+                    err => console.error(err)
+                )
+            }
+        </script>
         <script src="{% static 'js/face-api.min.js' %}"></script>
+        <script src="{% static 'js/init.js' %}"></script>
     {% endblock %}
 
 {% endblock %}
