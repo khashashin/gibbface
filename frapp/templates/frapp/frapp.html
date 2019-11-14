@@ -12,33 +12,56 @@
 
     <h1>frapp</h1>
     <div style="position: relative" class="margin">
-      <video onplay="onPlay(this)" id="inputVideo" autoplay muted></video>
-      <canvas id="overlay" />
+        <video onplay="onPlay(this)" autoplay muted style="border: 1px solid rgb(14, 168, 234);"></video>
+        <canvas/>
     </div>
 
-    {% block extra_js %}
-        <script>
-            jQuery(document).ready(function () {
-                run()
-            });
+    <button>Start video</button>
 
-            async function run() {
-                // load the models
-                await faceapi.loadMtcnnModel(`{% static 'models/mtcnn/mtcnn_model-weights_manifest.json' %}`);
-                await faceapi.loadFaceRecognitionModel(`{% static 'models/fr/face_recognition_model-weights_manifest.json' %}`);
+{% endblock %}
 
-                // try to access users webcam and stream the images
-                // to the video element
-                const videoEl = document.getElementById('inputVideo');
-                navigator.getUserMedia(
-                    {video: {}},
-                    stream => videoEl.srcObject = stream,
-                    err => console.error(err)
-                )
+{% block extra_js %}
+    <script src="{% static 'js/adapter.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            run();
+        });
+
+        async function run() {
+            // load the models
+            await faceapi.loadMtcnnModel(`{% static 'models/mtcnn/mtcnn_model-weights_manifest.json' %}`);
+            await faceapi.loadFaceRecognitionModel(`{% static 'models/fr/face_recognition_model-weights_manifest.json' %}`);
+
+            // try to access users webcam and stream the images
+            // to the video element
+            const video = document.querySelector('video');
+            const canvas = window.canvas = document.querySelector('canvas');
+            canvas.width = 480;
+            canvas.height = 360;
+            const button = document.querySelector('button');
+            button.onclick = function() {
+              canvas.width = video.videoWidth;
+              canvas.height = video.videoHeight;
+              canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            };
+            const constraints = {
+              audio: false,
+              video: true
+            };
+            function handleSuccess(stream) {
+              window.stream = stream; // make stream available to browser console
+              video.srcObject = stream;
             }
-        </script>
-        <script src="{% static 'js/face-api.min.js' %}"></script>
-        <script src="{% static 'js/init.js' %}"></script>
-    {% endblock %}
 
+            function handleError(error) {
+              console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
+            }
+            navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
+            {#navigator.mediaDevices.getUserMedia({audio: false, video: true})#}
+            {#    .then(stream => videoEl.srcObject = stream)#}
+            {#    .catch(err => console.error(err));#}
+            {#var log = msg => displ.innerHTML += msg + "<br>";#}
+        }
+    </script>
+    <script src="{% static 'js/face-api.min.js' %}"></script>
 {% endblock %}
