@@ -41,7 +41,9 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %}" style="
+    height: 100vh;
+">
         {% wagtailuserbar %}
 
         {% block content %}{% endblock %}
