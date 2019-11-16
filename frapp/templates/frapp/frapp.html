@@ -12,56 +12,93 @@
 
     <h1>frapp</h1>
     <div style="position: relative" class="margin">
-        <video onplay="onPlay(this)" autoplay muted style="border: 1px solid rgb(14, 168, 234);"></video>
-        <canvas/>
+        <video onloadedmetadata="onPlay(this)" id="video" autoplay muted playsinline width="480" height="384" style="
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        "></video>
+        <canvas id="overlay" width="480" height="384" style="
+            width: 480px;
+            height: 384px;
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 0;
+        "></canvas>
     </div>
-
-    <button>Start video</button>
+    <div id="fps_meter" class="row side-by-side" style="
+    bottom: 0;
+    position: absolute;
+    left: 30px;
+">
+        <div>
+            <label for="time">Time:</label>
+            <input disabled value="-" id="time" type="text" class="bold">
+            <label for="fps">Estimated Fps:</label>
+            <input disabled value="-" id="fps" type="text" class="bold">
+        </div>
+    </div>
 
 {% endblock %}
 
 {% block extra_js %}
+    <script src="{% static 'js/face-api.min.js' %}"></script>
     <script src="{% static 'js/adapter.js' %}"></script>
     <script>
+        let video;
+        let canvas;
+        let stream;
+        let forwardTimes = [];
+        const minConfidence = 0.6;
+        const maxResults = 1;
         $(document).ready(function () {
+            video = $('#video').get(0);
+            canvas = $('#overlay').get(0);
+            canvas.width = 480;
+            canvas.height = 384;
             run();
         });
+
+        function updateTimeStats(timeInMs) {
+            forwardTimes = [timeInMs].concat(forwardTimes).slice(0, 30);
+            const avgTimeInMs = forwardTimes.reduce((total, t) => total + t) / forwardTimes.length;
+            $('#time').val(`${Math.round(avgTimeInMs)} ms`);
+            $('#fps').val(`${faceapi.round(1000 / avgTimeInMs)}`);
+        }
 
         async function run() {
             // load the models
             await faceapi.loadMtcnnModel(`{% static 'models/mtcnn/mtcnn_model-weights_manifest.json' %}`);
             await faceapi.loadFaceRecognitionModel(`{% static 'models/fr/face_recognition_model-weights_manifest.json' %}`);
+            await faceapi.loadTinyFaceDetectorModel(`{% static 'models/fd/tiny_face_detector_model-weights_manifest.json' %}`);
+            navigator.mediaDevices.getUserMedia({audio: false, video: true}).then(stream => {
+                video.srcObject = stream;
+                video.play();
+            }).catch(e => console.warn(e));
+        }
 
-            // try to access users webcam and stream the images
-            // to the video element
-            const video = document.querySelector('video');
-            const canvas = window.canvas = document.querySelector('canvas');
-            canvas.width = 480;
-            canvas.height = 360;
-            const button = document.querySelector('button');
-            button.onclick = function() {
-              canvas.width = video.videoWidth;
-              canvas.height = video.videoHeight;
-              canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-            };
-            const constraints = {
-              audio: false,
-              video: true
-            };
-            function handleSuccess(stream) {
-              window.stream = stream; // make stream available to browser console
-              video.srcObject = stream;
+        async function onPlay() {
+            if (video.paused || video.ended)
+                return setTimeout(() => onPlay());
+
+            // tiny_face_detector options
+            let inputSize = 384;
+            let scoreThreshold = 0.5;
+            const options = new faceapi.TinyFaceDetectorOptions({inputSize, scoreThreshold});
+
+            const ts = Date.now();
+
+            const result = await faceapi.detectSingleFace(video, options);
+
+            updateTimeStats(Date.now() - ts);
+
+            if (result) {
+                const dims = faceapi.matchDimensions(canvas, video, true);
+                faceapi.draw.drawDetections(canvas, faceapi.resizeResults(result, dims))
             }
 
-            function handleError(error) {
-              console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
-            }
-            navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
-            {#navigator.mediaDevices.getUserMedia({audio: false, video: true})#}
-            {#    .then(stream => videoEl.srcObject = stream)#}
-            {#    .catch(err => console.error(err));#}
-            {#var log = msg => displ.innerHTML += msg + "<br>";#}
+            setTimeout(() => onPlay())
         }
     </script>
-    <script src="{% static 'js/face-api.min.js' %}"></script>
 {% endblock %}
