@@ -601,7 +601,6 @@ body {
   /* About Us Section
   --------------------------------*/
   #about {
-    background: url("../img/about-bg.jpg") center top no-repeat fixed;
     background-size: cover;
     padding: 60px 0 40px 0;
     position: relative;
