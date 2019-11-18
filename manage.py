@@ -4,7 +4,7 @@ import sys
 
 from django.conf import settings
 
-ENV = os.getenv('ENV', 'dev')
+ENV = os.environ['ENV']
 
 if __name__ == "__main__":
     if ENV == 'dev':
