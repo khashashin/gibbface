@@ -4,8 +4,10 @@ import sys
 
 from django.conf import settings
 
+ENV = os.getenv('ENV', 'dev')
+
 if __name__ == "__main__":
-    if settings.DEBUG:
+    if ENV == 'dev':
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gibbface.settings.dev")
     else:
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gibbface.settings.production")
