@@ -14,12 +14,12 @@ body {
   }
   
   a {
-    color: #18d26e;
+    color: #ade1e5;
     transition: 0.5s;
   }
   
   a:hover, a:active, a:focus {
-    color: #18d36e;
+    color: #ade1e5;
     outline: none;
     text-decoration: none;
   }
@@ -382,7 +382,7 @@ body {
   }
   
   .nav-menu ul li:hover > a {
-    color: #18d26e;
+    color: #ade1e5;
   }
   
   .nav-menu ul ul {
@@ -472,7 +472,7 @@ body {
   }
   
   #mobile-nav ul .menu-has-children i.fa-chevron-up {
-    color: #18d26e;
+    color: #ade1e5;
   }
   
   #mobile-nav ul .menu-has-children li a {
@@ -480,7 +480,7 @@ body {
   }
   
   #mobile-nav ul .menu-item-active {
-    color: #18d26e;
+    color: #ade1e5;
   }
   
   #mobile-body-overly {
@@ -571,7 +571,7 @@ body {
   }
   
   #featured-services i {
-    color: #18d26e;
+    color: #ade1e5;
     font-size: 48px;
     display: inline-block;
     line-height: 1;
@@ -588,7 +588,7 @@ body {
   }
   
   #featured-services h4 a:hover {
-    color: #18d26e;
+    color: #ade1e5;
   }
   
   #featured-services p {
@@ -709,7 +709,7 @@ body {
   }
   
   #services .icon i {
-    color: #18d26e;
+    color: #ade1e5;
     font-size: 36px;
     line-height: 1;
     transition: 0.5s;
@@ -727,7 +727,7 @@ body {
   }
   
   #services .box:hover .title a {
-    color: #18d26e;
+    color: #ade1e5;
   }
   
   #services .description {
@@ -770,8 +770,8 @@ body {
   }
   
   #call-to-action .cta-btn:hover {
-    background: #18d26e;
-    border: 2px solid #18d26e;
+    background: #ade1e5;
+    border: 2px solid #ade1e5;
   }
   
   /* Call To Action Section
@@ -834,7 +834,7 @@ body {
     font-weight: bold;
     font-size: 48px;
     display: block;
-    color: #18d26e;
+    color: #ade1e5;
   }
   
   #facts .counters p {
@@ -879,7 +879,7 @@ body {
   }
   
   #portfolio #portfolio-flters li:hover, #portfolio #portfolio-flters li.filter-active {
-    background: #18d26e;
+    background: #ade1e5;
     color: #fff;
   }
   
@@ -936,7 +936,7 @@ body {
   }
   
   #portfolio .portfolio-item figure .link-preview:hover, #portfolio .portfolio-item figure .link-details:hover {
-    background: #18d26e;
+    background: #ade1e5;
   }
   
   #portfolio .portfolio-item figure .link-preview:hover i, #portfolio .portfolio-item figure .link-details:hover i {
@@ -984,7 +984,7 @@ body {
   }
   
   #portfolio .portfolio-item .portfolio-info h4 a:hover {
-    color: #18d26e;
+    color: #ade1e5;
   }
   
   #portfolio .portfolio-item .portfolio-info p {
@@ -1028,7 +1028,7 @@ body {
   }
   
   #clients .owl-dot.active {
-    background-color: #18d26e;
+    background-color: #ade1e5;
   }
   
   /* Testimonials Section
@@ -1106,7 +1106,7 @@ body {
   }
   
   #testimonials .owl-dot.active {
-    background-color: #18d26e;
+    background-color: #ade1e5;
   }
   
   /* Team Section
@@ -1176,7 +1176,7 @@ body {
   }
   
   #team .member .social a:hover {
-    color: #18d26e;
+    color: #ade1e5;
   }
   
   #team .member .social i {
@@ -1199,7 +1199,7 @@ body {
     font-size: 48px;
     display: inline-block;
     margin-bottom: 10px;
-    color: #18d26e;
+    color: #ade1e5;
   }
   
   #contact .contact-info address, #contact .contact-info p {
@@ -1220,7 +1220,7 @@ body {
   }
   
   #contact .contact-info a:hover {
-    color: #18d26e;
+    color: #ade1e5;
   }
   
   #contact .contact-address, #contact .contact-phone, #contact .contact-email {
@@ -1241,8 +1241,8 @@ body {
   }
   
   #contact .form #sendmessage {
-    color: #18d26e;
-    border: 1px solid #18d26e;
+    color: #ade1e5;
+    border: 1px solid #ade1e5;
     display: none;
     text-align: center;
     padding: 15px;
@@ -1280,7 +1280,7 @@ body {
   }
   
   #contact .form button[type="submit"] {
-    background: #18d26e;
+    background: #ade1e5;
     border: 0;
     padding: 10px 30px;
     color: #fff;
@@ -1319,7 +1319,7 @@ body {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     letter-spacing: 3px;
-    border-left: 4px solid #18d26e;
+    border-left: 4px solid #ade1e5;
   }
   
   #footer .footer-top .footer-info p {
@@ -1346,7 +1346,7 @@ body {
   }
   
   #footer .footer-top .social-links a:hover {
-    background: #18d26e;
+    background: #ade1e5;
     color: #fff;
   }
   
@@ -1373,7 +1373,7 @@ body {
   }
   
   #footer .footer-top h4::after {
-    background: #18d26e;
+    background: #ade1e5;
     width: 60px;
   }
   
@@ -1406,7 +1406,7 @@ body {
   }
   
   #footer .footer-top .footer-links ul a:hover {
-    color: #18d26e;
+    color: #ade1e5;
   }
   
   #footer .footer-top .footer-contact {
@@ -1428,7 +1428,7 @@ body {
   }
   
   #footer .footer-top .footer-newsletter input[type="submit"] {
-    background: #18d26e;
+    background: #ade1e5;
     border: 0;
     width: 35%;
     padding: 6px 0;
