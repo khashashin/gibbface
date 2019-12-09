@@ -72,11 +72,13 @@ Then you can activate this virtual environment by entering the following: `env\S
 c:\Dev\gibbface>env\Scripts\activate
 ```
 Now you can see that your virtual environment is activated with the prefix `(env) c:\Dev>`
+And don't forget to create temporarily environment variable
 
 ---
 Install all required libraries:
 ```
 (env) c:\Dev\gibbface>pip install -r requirements.txt
+(env) c:\Dev\gibbface>$Env:ENV = "dev"
 ```
 Now that all libraries have been installed, we can start migrating the database by typing the following command:
 ```
