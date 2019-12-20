@@ -739,22 +739,22 @@ body {
   
   /* Call To Action Section
   --------------------------------*/
-  #call-to-action {
+  #facerecognition {
     background-size: cover;
     padding: 60px 0;
   }
   
-  #call-to-action h3 {
+  #facerecognition h3 {
     color: #fff;
     font-size: 28px;
     font-weight: 700;
   }
   
-  #call-to-action p {
+  #facerecognition p {
     color: #fff;
   }
   
-  #call-to-action .cta-btn {
+  #facerecognition .cta-btn {
     font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
     font-weight: 500;
@@ -769,7 +769,7 @@ body {
     color: #fff;
   }
   
-  #call-to-action .cta-btn:hover {
+  #facerecognition .cta-btn:hover {
     background: #ade1e5;
     border: 2px solid #ade1e5;
   }
