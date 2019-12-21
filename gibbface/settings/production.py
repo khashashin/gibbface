@@ -24,7 +24,8 @@ DATABASES = {
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
-ALLOWED_HOSTS = ['localhost', 'gibbface.iet-gibb.ch', '86.118.65.69']
+ALLOWED_HOSTS = ['172.29.4.69', 'localhost', 'gibbface.iet-gibb.ch', '86.118.65.69']
+# ALLOWED_HOSTS = ['*']
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 COMPRESS_OFFLINE = True
