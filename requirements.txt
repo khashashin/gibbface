@@ -30,7 +30,7 @@ django-sslserver==0.21
 django-taggit==1.1.0
 django-toolbelt==0.0.1
 django-treebeard==4.3
-django-two-factor-auth==1.9.1
+django-two-factor-auth==1.12
 djangorestframework==3.10.3
 draftjs-exporter==2.1.7
 gripcontrol==3.3.1
