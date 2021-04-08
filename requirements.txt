@@ -18,7 +18,7 @@ daphne==2.3.0
 dateparser==0.7.1
 dj-database-url==0.5.0
 dj-static==0.0.6
-Django==2.2.13
+Django==2.2.20
 django-eventstream==2.5.0
 django-filter==2.1.0
 django-formtools==2.1
